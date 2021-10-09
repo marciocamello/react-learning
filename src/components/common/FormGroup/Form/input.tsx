@@ -1,7 +1,15 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useRef } from 'react';
 
-const Form: FunctionComponent = ({ children }) => {
-    return <form action="">
+const Form: FunctionComponent = ({ children, ...rest }) => {
+
+    const formRef = useRef<HTMLFormElement>(null);
+
+    return <form
+        ref={formRef}
+        noValidate
+        autoComplete="false"
+        {...rest}
+    >
         {children}
     </form>;
 }
